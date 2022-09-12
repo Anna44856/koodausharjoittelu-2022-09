@@ -6,7 +6,8 @@ import vuodet
 
 henkilötiedot = [
     {"nimi": "Aliisa", "syntymävuosi": 1980},
-    {"nimi": "Bob", "syntymävuosi": 1967}
+    {"nimi": "Bob", "syntymävuosi": 1967},
+    {"nimi": "Cecilia", "syntymävuosi": 1920}
 ]
 
 henkilöiden_lempivärit = {
@@ -28,10 +29,13 @@ def henkilölistaus():
     for h in henkilöt:
         print(h.nimi, h.syntymävuosi)
         print(h.nimi, "on", h.ikä(), "vuotta vanha.")
-        lemmikit = henkilöiden_lemmikit.get(h.nimi)
-        if lemmikit:
-            for lemmikki in lemmikit:
-                print("Lemmikki:", lemmikki)
+        lemmikit = henkilöiden_lemmikit.get(h.nimi, [])
+        for lemmikki in lemmikit:
+            print("Lemmikki:", lemmikki)
+        try:
+            print("Lempiväri:", henkilöiden_lempivärit[h.nimi])
+        except KeyError:
+            print("Ei lempiväriä tiedossa")
         print("-")
 
 
@@ -62,7 +66,7 @@ def pääfunktio():
     print(aliisa.ikä())
 
     print("kutsutaan henkilötiedot-funktiota")
-    lempiväri = henkilöiden_lempivärit("Bob")
+    lempiväri = henkilöiden_lempivärit["Bob"]
     paluuarvo = bob.tiedot(lempiväri=lempiväri)
     print("palattiin funktiosta, paluuarvo:", paluuarvo)
     print("Joku syntymävuosi:", syntymävuosi)
