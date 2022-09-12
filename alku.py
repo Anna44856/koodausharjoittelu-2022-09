@@ -27,8 +27,12 @@ def henkilölistaus():
         henkilöt.append(h)
 
     for h in henkilöt:
-        print(h.nimi, h.syntymävuosi)
-        print(h.nimi, "on", h.ikä(), "vuotta vanha.")
+        print(f"{h.nimi} (s. {h.syntymävuosi})")
+
+        print(f"{h.nimi} on {h.ikä()} vuotta vanha.")
+
+
+
         lemmikit = henkilöiden_lemmikit.get(h.nimi, [])
         for lemmikki in lemmikit:
             print("Lemmikki:", lemmikki)
@@ -72,7 +76,7 @@ def pääfunktio():
     print("Joku syntymävuosi:", syntymävuosi)
 
 
-pääfunktio()
+# pääfunktio()
 
 # teksti = input("Anna luku: ")  # input on funktio
 
