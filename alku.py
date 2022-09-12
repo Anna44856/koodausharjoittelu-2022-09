@@ -1,15 +1,60 @@
 #!/usr/bin/env python
 # Tämä on aloitusskripti
 
-
 import henkilö
 import vuodet
+
+henkilötiedot = [
+    {"nimi": "Aliisa", "syntymävuosi": 1980},
+    {"nimi": "Bob", "syntymävuosi": 1967}
+]
+
+henkilöiden_lempivärit = {
+    "Aliisa": "musta",
+    "Bob": "sininen",
+}
+
+henkilöiden_lemmikit = {
+    "Aliisa": ["Musti"],
+    "Bob": ["Tupu", "Hupu", "Lupu"],
+}
+
+def henkilölistaus():
+    henkilöt = []
+    for ht in henkilötiedot:
+        h = henkilö.Henkilö(ht["nimi"], ht["syntymävuosi"])
+        henkilöt.append(h)
+
+    for h in henkilöt:
+        print(h.nimi, h.syntymävuosi)
+        print(h.nimi, "on", h.ikä(), "vuotta vanha.")
+        lemmikit = henkilöiden_lemmikit.get(h.nimi)
+        if lemmikit:
+            for lemmikki in lemmikit:
+                print("Lemmikki:", lemmikki)
+        print("-")
+
+
+henkilölistaus()
 
 
 def pääfunktio():
     syntymävuosi = 1970
     aliisa = henkilö.Henkilö("Aliisa", 1980)
     bob = henkilö.Henkilö(nimi="Bob", syntymävuosi= 1967)
+   
+    i = 0
+    while True:
+        i += 1
+        print("moi!", i)
+        if i > 8:
+            break
+        if i % 2 == 0:
+            continue
+        if i > 5:
+            print("iso on")
+
+    print("---------------")
 
     print(aliisa.nimi)
     print(aliisa.syntymävuosi)
@@ -17,7 +62,8 @@ def pääfunktio():
     print(aliisa.ikä())
 
     print("kutsutaan henkilötiedot-funktiota")
-    paluuarvo = bob.tiedot(lempiväri="punainen")
+    lempiväri = henkilöiden_lempivärit("Bob")
+    paluuarvo = bob.tiedot(lempiväri=lempiväri)
     print("palattiin funktiosta, paluuarvo:", paluuarvo)
     print("Joku syntymävuosi:", syntymävuosi)
 

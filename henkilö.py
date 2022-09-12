@@ -1,4 +1,3 @@
-
 from vuodet import nykyinen_vuosi
 
 class Henkilö:
@@ -14,3 +13,6 @@ class Henkilö:
         print("Ai, olet", self.ikä(), "vuotta vanha.")
         print("Lempivärisi on siis", lempiväri)
         return self.syntymävuosi
+
+    def __repr__(self):
+        return "<Henkilö: " + self.nimi + ">"
